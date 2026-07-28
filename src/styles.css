@@ -12,6 +12,7 @@
 :root {
   --primary-green: #105b48;
   --main-black: #191919;
+  --deep-gray: #3d3d3d;
   --sea-ink: #173a40;
   --sea-ink-soft: #416166;
   --lagoon: #4fb8b2;
@@ -70,6 +71,7 @@
 @theme inline {
   --font-sans: "Inter Variable", sans-serif;
   --color-primary-green: var(--primary-green);
+  --color-deep-gray: var(--deep-gray);
   --color-main-black: var(--main-black);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
