@@ -11,3 +11,9 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+
+# Yarn Berry local cache & state
+.yarn/install-state.gz
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml

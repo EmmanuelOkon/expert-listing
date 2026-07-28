@@ -1,5 +1,5 @@
 {
-  "projectName": "listing",
+  "projectName": "expert-listing",
   "mode": "file-router",
   "typescript": true,
   "packageManager": "yarn",

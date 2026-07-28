@@ -1,0 +1,16 @@
+{
+  "short_name": "Expert Listing",
+  "name": "Expert Listing | Verified Property Listings for Sale & Rent in Nigeria",
+  "icons": [
+    {
+      "src": "/assets/icons/logoIcon.png",
+      "type": "image/png",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
