@@ -24,6 +24,7 @@
     "@fontsource/open-runde": "^5.3.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/match-sorter-utils": "latest",
+    "@tanstack/query-core": "^5.101.4",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-form": "latest",
     "@tanstack/react-query": "latest",
