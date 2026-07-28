@@ -4,11 +4,12 @@ import type { PropertyCard as PropertyCardType } from "../../data/mockDashboardD
 
 interface PropertyCardProps {
   card: PropertyCardType;
+  className?: string;
 }
 
 const DOT_COUNT = 3;
 
-export function PropertyCard({ card }: PropertyCardProps) {
+export function PropertyCard({ card, className }: PropertyCardProps) {
   const [activeDot, setActiveDot] = useState(0);
 
   const handlePrev = () =>
@@ -18,8 +19,7 @@ export function PropertyCard({ card }: PropertyCardProps) {
 
   return (
     <div
-      className="relative rounded-2xl overflow-hidden bg-gray-900 aspect-[3/4] sm:aspect-[4/5] md:aspect-auto md:h-72 lg:h-80 xl:h-[340px] w-full
-        hover:shadow-xl transition-shadow duration-300 group "
+      className={`relative w-full overflow-hidden rounded-2xl bg-gray-900 aspect-[3/4] sm:aspect-[4/5] md:aspect-auto md:h-72 lg:h-80 xl:h-[340px] duration-300 group ${className ?? ""}`}
     >
       {/* Background Image */}
       <img
@@ -65,10 +65,7 @@ export function PropertyCard({ card }: PropertyCardProps) {
             id={`card-prev-${card.id}`}
             aria-label="Previous"
             onClick={handlePrev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-10
-              w-8 h-8 rounded-full bg-black/60 hover:bg-white/20 backdrop-blur-sm
-              flex items-center justify-center text-white
-               transition-all duration-200 cursor-pointer"
+            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 md:h-8 md:w-8"
           >
             <ChevronLeft size={16} strokeWidth={2.5} />
           </button>
@@ -76,10 +73,7 @@ export function PropertyCard({ card }: PropertyCardProps) {
             id={`card-next-${card.id}`}
             aria-label="Next"
             onClick={handleNext}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-10
-              w-8 h-8 rounded-full bg-black/60 hover:bg-white/20 backdrop-blur-sm 
-              flex items-center justify-center text-white
-               transition-all duration-200 cursor-pointer"
+            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 md:h-8 md:w-8"
           >
             <ChevronRight size={16} strokeWidth={2.5} />
           </button>
@@ -87,26 +81,28 @@ export function PropertyCard({ card }: PropertyCardProps) {
       )}
 
       {/* Bottom Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-5">
         {/* Stat Label */}
-        <p className="text-[10px] font-medium text-white/70 uppercase tracking-widest mb-1">
+        <p className="mb-1 text-[10px] font-medium uppercase tracking-widest text-white/70">
           {card.statLabel}
         </p>
 
         {/* Title */}
         {card.title && (
-          <h3 className="text-base font-bold text-white leading-snug mb-0.5">
+          <h3 className="mb-0.5 text-base font-bold leading-snug text-white sm:text-lg">
             {card.title}
           </h3>
         )}
 
         {/* Location */}
         {card.location && (
-          <p className="text-xs text-white/70 mb-2">{card.location}</p>
+          <p className="mb-2 text-xs text-white/70 sm:text-sm">
+            {card.location}
+          </p>
         )}
 
         {/* Stat Value */}
-        <p className="text-xl font-extrabold text-[#FFFF00] leading-none">
+        <p className="text-xl font-extrabold leading-none text-[#FFFF00] sm:text-2xl">
           {card.statValue}
         </p>
 
@@ -119,7 +115,7 @@ export function PropertyCard({ card }: PropertyCardProps) {
               aria-label={`Go to slide ${i + 1}`}
               onClick={() => setActiveDot(i)}
               className={`
-                h-1.5 rounded-full transition-all duration-300 cursor-pointer
+                h-1.5 rounded-full transition-all duration-300
                 ${i === activeDot ? "w-4 bg-white" : "w-1.5 bg-white/40"}
               `}
             />
@@ -132,11 +128,7 @@ export function PropertyCard({ card }: PropertyCardProps) {
         <button
           id={`card-chat-${card.id}`}
           aria-label="Open chat"
-          className="absolute bottom-4 right-4 z-10
-            w-10 h-10 rounded-full bg-white
-            flex items-center justify-center
-            shadow-lg hover:shadow-xl hover:scale-105
-            transition-all duration-200 cursor-pointer"
+          className="absolute bottom-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white  transition-all duration-200 hover:scale-105  md:h-10 md:w-10"
         >
           <MessageCircle size={18} className="text-[#101828]" strokeWidth={2} />
         </button>

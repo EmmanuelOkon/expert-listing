@@ -25,7 +25,7 @@ export function SalesBarChart() {
       <svg
         viewBox="0 0 420 190"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-auto"
+        className="h-auto w-full"
         role="img"
         aria-label="Sales bar chart showing monthly data"
       >
@@ -122,7 +122,7 @@ export function SalesBarChart() {
       </svg>
 
       {/* Legend */}
-      <div className="flex items-center gap-4 mt-1 px-2">
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 px-2">
         {[
           { color: BAR_COLORS.a, label: "Inflow" },
           { color: BAR_COLORS.b, label: "MRR" },

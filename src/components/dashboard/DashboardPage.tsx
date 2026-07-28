@@ -6,7 +6,7 @@ import { SalesOverviewCard } from "./SalesOverviewCard";
 import { OverviewCard } from "./OverviewCard";
 import { PropertyCard } from "./PropertyCard";
 import { overviewStats, propertyCards } from "../../data/mockDashboardData";
-import { Tabs } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { AdminNavList } from "#/utils/static";
 import { AnimatePresence, motion } from "framer-motion";
 import { DashboardIcons } from "#/assets/icons/DashboardIcons";
@@ -31,13 +31,16 @@ const tabPlaceholderCopy: Record<string, { title: string }> = {
 
 function TabPlaceholder({ title }: { title: string }) {
   return (
-    <section className="max-w-[1400px] mx-auto w-full px-4 md:px-6">
-      <div className="min-h-[calc(100vh-180px)] flex flex-col items-center justify-center h-full my-auto ">
-        <p className="text-2xl font-bold text-primary-green uppercase tracking[0.2em]">
+    <section className="mx-auto w-full max-w-[1400px] px-4 sm:px-5 md:px-6">
+      <div className="flex min-h-[55vh] flex-col items-center justify-center gap-4 py-10 text-center sm:min-h-[60vh] md:py-14">
+        <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary-green sm:text-base">
           {title}
         </p>
-        <DashboardIcons.Construction className="w-32 text-primary-green" />
-        <h2 className="mt-2 text-2xl font-semibold text-primary-green ">
+        <DashboardIcons.Construction
+          className="h-20 w-20 text-primary-green sm:h-24 sm:w-24 md:h-32 md:w-32"
+          aria-hidden="true"
+        />
+        <h2 className="text-2xl font-semibold text-primary-green sm:text-3xl">
           Coming soon
         </h2>
       </div>
@@ -47,24 +50,38 @@ function TabPlaceholder({ title }: { title: string }) {
 
 function DashboardTabContent() {
   return (
-    <main className="2xl:max-w-360 lg:max-w-[1280px] mx-auto px-4 ">
+    <main className="mx-auto w-full max-w-[1400px] px-4 py-4 sm:px-5 md:px-6 md:py-6">
       <WelcomeHeader firstName="Ahmed" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 max-w-7xl gap-5 mb-6 w-full">
+      <div className="mb-6 grid grid-cols-1 gap-5 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <SalesOverviewCard />
         </div>
 
-        <div className="lg:col-span-4 flex flex-col gap-5">
+        <div className="flex flex-col gap-5 lg:col-span-4">
           {overviewStats.map((stat) => (
-            <div key={stat.id} className="flex-1 flex flex-col">
+            <div key={stat.id} className="flex flex-col">
               <OverviewCard stat={stat} />
             </div>
           ))}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 lg:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        aria-label="Property cards"
+      >
+        {propertyCards.map((card) => (
+          <div
+            key={card.id}
+            className="min-w-[85%] flex-[0_0_85%] snap-start sm:min-w-[72%] sm:flex-[0_0_72%] md:min-w-[56%] md:flex-[0_0_56%]"
+          >
+            <PropertyCard card={card} />
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden gap-5 lg:grid lg:grid-cols-3">
         {propertyCards.map((card) => (
           <PropertyCard key={card.id} card={card} />
         ))}
@@ -104,17 +121,23 @@ export function DashboardPage() {
         className="justify-start p-0"
       >
         <NavTabs />
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="py-5">{activePanel}</div>
-          </motion.div>
-        </AnimatePresence>
+        <TabsContent
+          value={activeTab}
+          className="mt-0 w-full border-0 p-0 outline-none"
+        >
+          <AnimatePresence mode="wait">
+            <motion.section
+              key={activeTab}
+              className="w-full py-5"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {activePanel}
+            </motion.section>
+          </AnimatePresence>
+        </TabsContent>
       </Tabs>
     </div>
   );

@@ -13,21 +13,20 @@ const iconMap = {
 
 export function OverviewCard({ stat }: OverviewCardProps) {
   const Icon = iconMap[stat.icon];
-  const isWide = stat.metrics.length > 3;
 
   return (
-    <div className="bg-white rounded-2xl border border-[#E4E4E4] h-full">
+    <div className="h-full rounded-2xl border border-[#E4E4E4] bg-white">
       {/* Header */}
-      <div className="flex items-center justify-between bg-[#F9FAFB] rounded-t-2xl border-b border-[#E4E4E4] p-4 ">
+      <div className="flex items-center justify-between rounded-t-2xl border-b border-[#E4E4E4] bg-[#F9FAFB] p-4 sm:p-5">
         <div className="flex items-center gap-2">
-          <Icon className="text-[#4545FE] w-6 h-6 " />
-          <span className="text-sm font-semibold text-[#292929]">
+          <Icon className="h-5 w-5 text-[#4545FE] sm:h-6 sm:w-6" />
+          <span className="text-sm font-semibold text-[#292929] sm:text-base">
             {stat.title}
           </span>
         </div>
         <button
           id={`view-all-${stat.id}`}
-          className="text-xs text-[#4545FE] font-medium hover:underline flex items-center gap-0.5 cursor-pointer transition-colors duration-300"
+          className="inline-flex min-h-11 items-center gap-1 text-xs font-medium text-[#4545FE] transition-colors duration-300 hover:underline focus-visible:ring-2 focus-visible:ring-[#4545FE]/30 sm:text-sm"
         >
           View all{" "}
           <span className="text-[10px] font-bold" aria-hidden="true">
@@ -37,17 +36,13 @@ export function OverviewCard({ stat }: OverviewCardProps) {
       </div>
 
       {/* Metrics Grid */}
-      <div
-        className={`grid gap-y-3 p-4 gap-x-4 ${
-          isWide ? "grid-cols-3" : "grid-cols-3"
-        }`}
-      >
+      <div className="grid gap-x-4 gap-y-4 p-4 sm:grid-cols-2 sm:p-5 lg:grid-cols-3">
         {stat.metrics.map((metric) => (
-          <div key={metric.label} className="flex flex-col gap-0.5 lg:gap-3">
-            <span className="text-sm text-[#525252] font-medium">
+          <div key={metric.label} className="flex flex-col gap-1">
+            <span className="text-sm font-medium text-[#525252]">
               {metric.label}
             </span>
-            <span className="text-lg lg:text-2xl font-semibold text-[#141414] leading-tight">
+            <span className="text-lg font-semibold leading-tight text-[#141414] sm:text-xl lg:text-2xl">
               {metric.value}
             </span>
           </div>
