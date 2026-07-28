@@ -120,5 +120,5 @@ export const DashboardIcons = {
         />
       </svg>
     );
-  }
+  },
 };

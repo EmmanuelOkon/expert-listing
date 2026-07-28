@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import { Button } from '../ui/button'
+import { motion } from "framer-motion";
+import { Button } from "../ui/button";
 
 export default function NotFound() {
   return (
@@ -33,5 +33,5 @@ export default function NotFound() {
         </div>
       </motion.div>
     </>
-  )
+  );
 }

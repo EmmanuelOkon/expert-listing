@@ -2,21 +2,21 @@ import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
-} from '@tanstack/react-router'
-import { buildRootMeta, buildRootSeoLinks } from '../lib/site-meta'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
+} from "@tanstack/react-router";
+import { buildRootMeta, buildRootSeoLinks } from "../lib/site-meta";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { TanStackDevtools } from "@tanstack/react-devtools";
 
-import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
+import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 // import NotFound from '../components/shared/NotFound'
 
-import appCss from '../styles.css?url'
+import appCss from "../styles.css?url";
 
-import type { QueryClient } from '@tanstack/react-query'
-import NotFound from '../components/shared/NotFound'
+import type { QueryClient } from "@tanstack/react-query";
+import NotFound from "../components/shared/NotFound";
 
 interface MyRouterContext {
-  queryClient: QueryClient
+  queryClient: QueryClient;
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
@@ -24,7 +24,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     meta: buildRootMeta() as any,
     links: [
       {
-        rel: 'stylesheet',
+        rel: "stylesheet",
         href: appCss,
       },
       ...buildRootSeoLinks(),
@@ -32,7 +32,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   }),
   shellComponent: RootDocument,
   notFoundComponent: NotFound,
-})
+});
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
@@ -44,11 +44,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         {children}
         <TanStackDevtools
           config={{
-            position: 'bottom-right',
+            position: "bottom-right",
           }}
           plugins={[
             {
-              name: 'Tanstack Router',
+              name: "Tanstack Router",
               render: <TanStackRouterDevtoolsPanel />,
             },
             TanStackQueryDevtools,
@@ -57,5 +57,5 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }

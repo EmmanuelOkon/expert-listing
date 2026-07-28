@@ -1,17 +1,16 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
 @import "shadcn/tailwind.css";
 
-
-@import '@fontsource/open-runde';
+@import "@fontsource/open-runde";
 @import "tw-animate-css";
 @import "@fontsource-variable/inter";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary-green: #105B48;
+  --primary-green: #105b48;
   --main-black: #191919;
   --sea-ink: #173a40;
   --sea-ink-soft: #416166;
@@ -69,7 +68,7 @@
 }
 
 @theme inline {
-  --font-sans: 'Inter Variable', sans-serif;
+  --font-sans: "Inter Variable", sans-serif;
   --color-primary-green: var(--primary-green);
   --color-main-black: var(--main-black);
   --color-background: var(--background);
@@ -124,12 +123,11 @@ body {
   margin: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-
 }
 
 @layer base {
   * {
-    font-family: 'Open Runde', sans-serif;
+    font-family: "Open Runde", sans-serif;
     @apply border-border outline-ring/50;
   }
 
