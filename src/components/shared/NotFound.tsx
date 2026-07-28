@@ -21,7 +21,7 @@ export default function NotFound() {
         <div className="flex justify-center flex-col items-center space-y-4  ">
           <h2 className="font-bold text-3xl text-black">Hello Explorer!</h2>
           <p className="text-center ">
-            This page does not exist on WonCut&apos;s Planet
+            This page does not exist on Expert Listing&apos;s Planet
           </p>
 
           <Button
