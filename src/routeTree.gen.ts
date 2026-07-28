@@ -8,79 +8,191 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as IndexRouteImport } from "./routes/index";
+import { Route as DashboardIndexRouteImport } from "./routes/dashboard/index";
+import { Route as DashboardApplicationsRouteImport } from "./routes/dashboard/applications";
+import { Route as DashboardListingsRouteImport } from "./routes/dashboard/listings";
+import { Route as DashboardRequestRouteImport } from "./routes/dashboard/request";
+import { Route as DashboardTasksRouteImport } from "./routes/dashboard/tasks";
+import { Route as DashboardUsersRouteImport } from "./routes/dashboard/users";
 
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
+  id: "/dashboard/",
+  path: "/dashboard/",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
+const DashboardApplicationsRoute = DashboardApplicationsRouteImport.update({
+  id: "/dashboard/applications",
+  path: "/dashboard/applications",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const DashboardListingsRoute = DashboardListingsRouteImport.update({
+  id: "/dashboard/listings",
+  path: "/dashboard/listings",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const DashboardRequestRoute = DashboardRequestRouteImport.update({
+  id: "/dashboard/request",
+  path: "/dashboard/request",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const DashboardTasksRoute = DashboardTasksRouteImport.update({
+  id: "/dashboard/tasks",
+  path: "/dashboard/tasks",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const DashboardUsersRoute = DashboardUsersRouteImport.update({
+  id: "/dashboard/users",
+  path: "/dashboard/users",
+  getParentRoute: () => rootRouteImport,
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/dashboard/': typeof DashboardIndexRoute
+  "/": typeof IndexRoute;
+  "/dashboard/applications": typeof DashboardApplicationsRoute;
+  "/dashboard/listings": typeof DashboardListingsRoute;
+  "/dashboard/request": typeof DashboardRequestRoute;
+  "/dashboard/tasks": typeof DashboardTasksRoute;
+  "/dashboard/users": typeof DashboardUsersRoute;
+  "/dashboard/": typeof DashboardIndexRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/dashboard': typeof DashboardIndexRoute
+  "/": typeof IndexRoute;
+  "/dashboard/applications": typeof DashboardApplicationsRoute;
+  "/dashboard/listings": typeof DashboardListingsRoute;
+  "/dashboard/request": typeof DashboardRequestRoute;
+  "/dashboard/tasks": typeof DashboardTasksRoute;
+  "/dashboard/users": typeof DashboardUsersRoute;
+  "/dashboard": typeof DashboardIndexRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/dashboard/': typeof DashboardIndexRoute
+  __root__: typeof rootRouteImport;
+  "/": typeof IndexRoute;
+  "/dashboard/applications": typeof DashboardApplicationsRoute;
+  "/dashboard/listings": typeof DashboardListingsRoute;
+  "/dashboard/request": typeof DashboardRequestRoute;
+  "/dashboard/tasks": typeof DashboardTasksRoute;
+  "/dashboard/users": typeof DashboardUsersRoute;
+  "/dashboard/": typeof DashboardIndexRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard/'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard'
-  id: '__root__' | '/' | '/dashboard/'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths:
+    | "/"
+    | "/dashboard/applications"
+    | "/dashboard/listings"
+    | "/dashboard/request"
+    | "/dashboard/tasks"
+    | "/dashboard/users"
+    | "/dashboard/";
+  fileRoutesByTo: FileRoutesByTo;
+  to:
+    | "/"
+    | "/dashboard/applications"
+    | "/dashboard/listings"
+    | "/dashboard/request"
+    | "/dashboard/tasks"
+    | "/dashboard/users"
+    | "/dashboard";
+  id:
+    | "__root__"
+    | "/"
+    | "/dashboard/applications"
+    | "/dashboard/listings"
+    | "/dashboard/request"
+    | "/dashboard/tasks"
+    | "/dashboard/users"
+    | "/dashboard/";
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  DashboardIndexRoute: typeof DashboardIndexRoute
+  IndexRoute: typeof IndexRoute;
+  DashboardApplicationsRoute: typeof DashboardApplicationsRoute;
+  DashboardListingsRoute: typeof DashboardListingsRoute;
+  DashboardRequestRoute: typeof DashboardRequestRoute;
+  DashboardTasksRoute: typeof DashboardTasksRoute;
+  DashboardUsersRoute: typeof DashboardUsersRoute;
+  DashboardIndexRoute: typeof DashboardIndexRoute;
 }
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard/': {
-      id: '/dashboard/'
-      path: '/dashboard'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/dashboard/": {
+      id: "/dashboard/";
+      path: "/dashboard";
+      fullPath: "/dashboard/";
+      preLoaderRoute: typeof DashboardIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/dashboard/applications": {
+      id: "/dashboard/applications";
+      path: "/dashboard/applications";
+      fullPath: "/dashboard/applications";
+      preLoaderRoute: typeof DashboardApplicationsRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/dashboard/listings": {
+      id: "/dashboard/listings";
+      path: "/dashboard/listings";
+      fullPath: "/dashboard/listings";
+      preLoaderRoute: typeof DashboardListingsRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/dashboard/request": {
+      id: "/dashboard/request";
+      path: "/dashboard/request";
+      fullPath: "/dashboard/request";
+      preLoaderRoute: typeof DashboardRequestRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/dashboard/tasks": {
+      id: "/dashboard/tasks";
+      path: "/dashboard/tasks";
+      fullPath: "/dashboard/tasks";
+      preLoaderRoute: typeof DashboardTasksRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/dashboard/users": {
+      id: "/dashboard/users";
+      path: "/dashboard/users";
+      fullPath: "/dashboard/users";
+      preLoaderRoute: typeof DashboardUsersRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardApplicationsRoute: DashboardApplicationsRoute,
+  DashboardListingsRoute: DashboardListingsRoute,
+  DashboardRequestRoute: DashboardRequestRoute,
+  DashboardTasksRoute: DashboardTasksRoute,
+  DashboardUsersRoute: DashboardUsersRoute,
   DashboardIndexRoute: DashboardIndexRoute,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
 
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
+import type { getRouter } from "./router.tsx";
+import type { createStart } from "@tanstack/react-start";
+declare module "@tanstack/react-start" {
   interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
+    ssr: true;
+    router: Awaited<ReturnType<typeof getRouter>>;
   }
 }
