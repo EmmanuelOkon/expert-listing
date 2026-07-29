@@ -34,14 +34,19 @@ export interface OverviewStat {
 export interface PropertyCard {
   id: string;
   type: "total-visits" | "most-clicked" | "most-watchlisted";
-  statLabel: string;
-  statValue: string;
-  title?: string;
-  location?: string;
-  bgImage: string;
-  badges?: Array<{ label: string; active: boolean }>;
-  showNav?: boolean;
+  defaultMode?: string;
   showChat?: boolean;
+  modes: Array<{
+    value: string;
+    label: string;
+    slides: Array<{
+      bgImage: string;
+      statLabel: string;
+      statValue: string;
+      title: string;
+      location: string;
+    }>;
+  }>;
 }
 
 // ─── Sales Chart Data ─────────────────────────────────────────────────────────
@@ -133,56 +138,161 @@ export const propertyCards: PropertyCard[] = [
   {
     id: "total-visits",
     type: "total-visits",
-    statLabel: "TOTAL SITE VISITS",
-    statValue: "11k",
-    bgImage: "/listingOne.webp",
-    showNav: false,
+    defaultMode: "overview",
     showChat: false,
+    modes: [
+      {
+        value: "overview",
+        label: "Overview",
+        slides: [
+          {
+            bgImage: "/listingOne.webp",
+            statLabel: "TOTAL SITE VISITS",
+            statValue: "11k",
+            title: "Traffic overview",
+            location: "Last 7 days",
+          },
+          {
+            bgImage: "/listingTwo.jpg",
+            statLabel: "TOTAL SITE VISITS",
+            statValue: "12.4k",
+            title: "Traffic spikes during peak hours",
+            location: "Ikoyi, Lagos",
+          },
+          {
+            bgImage: "/building-brick.png",
+            statLabel: "TOTAL SITE VISITS",
+            statValue: "13.1k",
+            title: "New visits after fresh listings",
+            location: "Victoria Island, Lagos",
+          },
+        ],
+      },
+    ],
   },
   {
     id: "most-clicked",
     type: "most-clicked",
-    statLabel: "MOST CLICKED",
-    statValue: "40k",
-    title: "Urban Prime Plaza Premiere",
-    location: "Ikoyi, Lagos",
-    bgImage: "/listingTwo.jpg",
-    badges: [
-      { label: "Live Listings", active: true },
-      { label: "All Listings", active: false },
-    ],
-    showNav: true,
+    defaultMode: "live",
     showChat: false,
-  },
-  {
-    id: "most-clicked",
-    type: "most-clicked",
-    statLabel: "MOST CLICKED",
-    statValue: "40k",
-    title: "Urban Prime Plaza Premiere",
-    location: "Ikoyi, Lagos",
-    bgImage: "/listingThree.jpg",
-    badges: [
-      { label: "Live Listings", active: true },
-      { label: "All Listings", active: false },
+    modes: [
+      {
+        value: "live",
+        label: "Live Listings",
+        slides: [
+          {
+            bgImage: "/listingTwo.jpg",
+            statLabel: "MOST CLICKED",
+            statValue: "40k",
+            title: "Urban Prime Plaza Premiere",
+            location: "Ikoyi, Lagos",
+          },
+          {
+            bgImage: "/listingThree.jpg",
+            statLabel: "MOST CLICKED",
+            statValue: "41.2k",
+            title: "Urban Prime Plaza Premiere - Sky Unit",
+            location: "Ikoyi, Lagos",
+          },
+          {
+            bgImage: "/listingFour.jpg",
+            statLabel: "MOST CLICKED",
+            statValue: "39.6k",
+            title: "Urban Prime Plaza Premiere - Corner Suite",
+            location: "Ikoyi, Lagos",
+          },
+        ],
+      },
+      {
+        value: "all",
+        label: "All Listings",
+        slides: [
+          {
+            bgImage: "/building-brick.png",
+            statLabel: "ALL LISTINGS",
+            statValue: "128",
+            title: "Urban Prime Collection",
+            location: "Ikoyi, Lagos",
+          },
+          {
+            bgImage: "/building-glass.png",
+            statLabel: "ALL LISTINGS",
+            statValue: "136",
+            title: "Urban Prime Portfolio",
+            location: "Lekki, Lagos",
+          },
+          {
+            bgImage: "/listingOne.webp",
+            statLabel: "ALL LISTINGS",
+            statValue: "142",
+            title: "Urban Prime Featured Homes",
+            location: "Victoria Island, Lagos",
+          },
+        ],
+      },
     ],
-    showNav: true,
-    showChat: false,
   },
   {
     id: "most-watchlisted",
     type: "most-watchlisted",
-    statLabel: "MOST WATCHLISTED",
-    statValue: "20k",
-    title: "Urban Prime Plaza Premiere",
-    location: "Ikoyi, Lagos",
-    bgImage: "/listingFour.jpg",
-    badges: [
-      { label: "Live Listings", active: false },
-      { label: "All Listings", active: true },
-    ],
-    showNav: true,
+    defaultMode: "all",
     showChat: true,
+    modes: [
+      {
+        value: "live",
+        label: "Live Listings",
+        slides: [
+          {
+            bgImage: "/listingFour.jpg",
+            statLabel: "MOST WATCHLISTED",
+            statValue: "20k",
+            title: "Urban Prime Plaza Premiere",
+            location: "Ikoyi, Lagos",
+          },
+          {
+            bgImage: "/listingOne.webp",
+            statLabel: "MOST WATCHLISTED",
+            statValue: "21.3k",
+            title: "Urban Prime Plaza Premiere - Penthouse",
+            location: "Ikoyi, Lagos",
+          },
+          {
+            bgImage: "/listingTwo.jpg",
+            statLabel: "MOST WATCHLISTED",
+            statValue: "22k",
+            title: "Urban Prime Plaza Premiere - Garden Suite",
+            location: "Ikoyi, Lagos",
+          },
+        ],
+      },
+      {
+        value: "all",
+        label: "All Listings",
+        slides: [
+          {
+            bgImage: "/building-brick.png",
+            statLabel: "ALL LISTINGS",
+            statValue: "94",
+            title: "Watchlist collection",
+            location: "Lagos Mainland",
+          },
+          {
+            bgImage: "/building-glass.png",
+            statLabel: "ALL LISTINGS",
+            statValue: "101",
+            title: "Saved homes collection",
+            location: "Lekki, Lagos",
+          },
+          {
+            bgImage: "/listingThree.jpg",
+            statLabel: "ALL LISTINGS",
+            statValue: "110",
+            title: "Top watched residences",
+            location: "Victoria Island, Lagos",
+          },
+        ],
+      },
+    ],
   },
 ];
 

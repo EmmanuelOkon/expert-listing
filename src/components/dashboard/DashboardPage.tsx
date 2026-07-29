@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { DashboardIcons } from "#/assets/icons/DashboardIcons";
+import { AdminNavList } from "#/utils/static";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { overviewStats, propertyCards } from "../../data/mockDashboardData";
+import { ExpertListingChat } from "./ExpertListingChat";
 import { Header } from "./Header";
 import NavTabs from "./NavTabs";
-import { WelcomeHeader } from "./WelcomeHeader";
-import { SalesOverviewCard } from "./SalesOverviewCard";
 import { OverviewCard } from "./OverviewCard";
 import { PropertyCard } from "./PropertyCard";
-import { overviewStats, propertyCards } from "../../data/mockDashboardData";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
-import { AdminNavList } from "#/utils/static";
-import { AnimatePresence, motion } from "framer-motion";
-import { DashboardIcons } from "#/assets/icons/DashboardIcons";
+import { SalesOverviewCard } from "./SalesOverviewCard";
+import { WelcomeHeader } from "./WelcomeHeader";
+import { DashboardPageSkeleton } from "../shared/DashboardSkeleton";
 
 const tabPlaceholderCopy: Record<string, { title: string }> = {
   listings: {
@@ -49,6 +51,8 @@ function TabPlaceholder({ title }: { title: string }) {
 }
 
 function DashboardTabContent() {
+  const showChat = propertyCards.some((card) => card.showChat);
+
   return (
     <main className="mx-auto w-full max-w-[1400px] px-4 py-4 sm:px-5 md:px-6 md:py-6">
       <WelcomeHeader firstName="Ahmed" />
@@ -86,12 +90,15 @@ function DashboardTabContent() {
           <PropertyCard key={card.id} card={card} />
         ))}
       </div>
+
+      <ExpertListingChat visible={showChat} />
     </main>
   );
 }
 
 export function DashboardPage() {
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [isLoading, setIsLoading] = useState(true);
 
   const activeTabConfig = AdminNavList.find((tab) => tab.value === activeTab);
 
@@ -111,6 +118,14 @@ export function DashboardPage() {
     );
   })();
 
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 250);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col">
       <Header />
@@ -121,23 +136,26 @@ export function DashboardPage() {
         className="justify-start p-0"
       >
         <NavTabs />
-        {/* <NavTabs activeTab={activeTab} /> */}
         <TabsContent
           value={activeTab}
           className="mt-0 w-full border-0 p-0 outline-none"
         >
-          <AnimatePresence mode="wait">
-            <motion.section
-              key={activeTab}
-              className="w-full py-5"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {activePanel}
-            </motion.section>
-          </AnimatePresence>
+          {isLoading ? (
+            <DashboardPageSkeleton />
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.section
+                key={activeTab}
+                className="w-full py-5"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {activePanel}
+              </motion.section>
+            </AnimatePresence>
+          )}
         </TabsContent>
       </Tabs>
     </div>
