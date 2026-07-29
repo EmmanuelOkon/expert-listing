@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { PropertyCard as PropertyCardType } from "../../data/mockDashboardData";
+import { DashboardIcons } from "#/assets/icons/DashboardIcons";
 
 interface PropertyCardProps {
   card: PropertyCardType;
@@ -128,9 +129,9 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
         <button
           id={`card-chat-${card.id}`}
           aria-label="Open chat"
-          className="absolute bottom-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white  transition-all duration-200 hover:scale-105  md:h-10 md:w-10"
+          className="absolute top-1/2 -translate-y-1/2 right-2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[#242526]  transition-all duration-200 hover:scale-105  md:h-13 md:w-13 border border-white/20 p-2"
         >
-          <MessageCircle size={18} className="text-[#101828]" strokeWidth={2} />
+          <DashboardIcons.Chat className="text-[#101828] w-7 h-7" />
         </button>
       )}
     </div>

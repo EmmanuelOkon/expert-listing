@@ -60,7 +60,7 @@ function DashboardTabContent() {
 
         <div className="flex flex-col gap-5 lg:col-span-4">
           {overviewStats.map((stat) => (
-            <div key={stat.id} className="flex flex-col">
+            <div key={stat.id} className="flex-1 flex flex-col">
               <OverviewCard stat={stat} />
             </div>
           ))}
@@ -121,6 +121,7 @@ export function DashboardPage() {
         className="justify-start p-0"
       >
         <NavTabs />
+        {/* <NavTabs activeTab={activeTab} /> */}
         <TabsContent
           value={activeTab}
           className="mt-0 w-full border-0 p-0 outline-none"

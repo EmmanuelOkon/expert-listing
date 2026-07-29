@@ -42,7 +42,7 @@ export function SalesOverviewCard() {
                 onClick={() => setActiveRange(range)}
                 aria-pressed={activeRange === range}
                 className={`
-                  min-h-11 rounded-md px-3 text-xs font-medium transition-all duration-200
+                  min-h-11 rounded-md px-3 text-xs font-medium transition-all duration-200 cursor-pointer
                   ${
                     activeRange === range
                       ? "bg-[#F5F5F5] text-deep-gray"
