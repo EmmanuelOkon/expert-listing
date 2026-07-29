@@ -1,5 +1,13 @@
 # Expert Listing
 
+## Features
+
+- Dashboard-first experience with responsive tab navigation and property cards
+- Shared loading skeletons for dashboard pages while content is resolving
+- Lightweight "Coming soon" states for unfinished dashboard sections
+- A floating app chat icon with a simple coming-soon popover
+- Custom error page handling for invalid or missing routes
+
 ## How to Run
 
 ```bash
