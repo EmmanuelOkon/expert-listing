@@ -1,15 +1,16 @@
+import { DashboardIcons } from "#/assets/icons/DashboardIcons";
+import { AdminNavList } from "#/utils/static";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { overviewStats, propertyCards } from "../../data/mockDashboardData";
+import { ExpertListingChat } from "./ExpertListingChat";
 import { Header } from "./Header";
 import NavTabs from "./NavTabs";
-import { WelcomeHeader } from "./WelcomeHeader";
-import { SalesOverviewCard } from "./SalesOverviewCard";
 import { OverviewCard } from "./OverviewCard";
 import { PropertyCard } from "./PropertyCard";
-import { overviewStats, propertyCards } from "../../data/mockDashboardData";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
-import { AdminNavList } from "#/utils/static";
-import { AnimatePresence, motion } from "framer-motion";
-import { DashboardIcons } from "#/assets/icons/DashboardIcons";
+import { SalesOverviewCard } from "./SalesOverviewCard";
+import { WelcomeHeader } from "./WelcomeHeader";
 
 const tabPlaceholderCopy: Record<string, { title: string }> = {
   listings: {
@@ -49,6 +50,8 @@ function TabPlaceholder({ title }: { title: string }) {
 }
 
 function DashboardTabContent() {
+  const showChat = propertyCards.some((card) => card.showChat);
+
   return (
     <main className="mx-auto w-full max-w-[1400px] px-4 py-4 sm:px-5 md:px-6 md:py-6">
       <WelcomeHeader firstName="Ahmed" />
@@ -86,6 +89,8 @@ function DashboardTabContent() {
           <PropertyCard key={card.id} card={card} />
         ))}
       </div>
+
+      <ExpertListingChat visible={showChat} />
     </main>
   );
 }

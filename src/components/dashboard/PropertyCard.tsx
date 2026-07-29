@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { PropertyCard as PropertyCardType } from "../../data/mockDashboardData";
-import { DashboardIcons } from "#/assets/icons/DashboardIcons";
 
 interface PropertyCardProps {
   card: PropertyCardType;
@@ -69,12 +68,14 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => handleModeChange(mode.value)}
-                className={`inline-flex min-h-11 items-center gap-1.5 rounded-md px-3 py-1 text-[10px] font-semibold backdrop-blur-sm transition-colors duration-200 sm:text-xs ${
-                  isActive
-                    ? "bg-white text-[#101828]"
-                    : "border border-white/30 bg-black/50 text-white hover:bg-white/15"
+                className={`inline-flex min-h-11 items-center rounded-md px-3 py-1 text-[10px] bg-black/60 font-semibold transition-colors duration-200 sm:text-xs gap-1 ${
+                  isActive ? " text-[#FFFF00]" : " text-[#D4D4D8] "
                 }`}
               >
+                {isActive && (
+                  <span className="bg-[#FFFF00] h-1.5 w-1.5 rounded-full" />
+                )}
+
                 {mode.label}
               </button>
             );
@@ -139,20 +140,6 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
           </div>
         )}
       </div>
-
-      {card.showChat && (
-        <button
-          type="button"
-          id={`card-chat-${card.id}`}
-          aria-label="Open chat"
-          className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#242526] p-2 transition-all duration-200 hover:scale-105 md:h-13 md:w-13"
-        >
-          <DashboardIcons.Chat
-            className="h-7 w-7 text-white"
-            aria-hidden="true"
-          />
-        </button>
-      )}
     </article>
   );
 }
