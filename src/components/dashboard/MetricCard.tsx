@@ -29,24 +29,22 @@ export function MetricCard({ metric }: MetricCardProps) {
   return (
     <div
       className={`
-        rounded-xl p-4 border border-[#EAECF0] bg-white
-        hover:shadow-md transition-shadow duration-200
-        flex flex-col gap-2
+        flex flex-col gap-2 rounded-xl border border-[#EAECF0] bg-white p-3 sm:p-4
       `}
     >
       <p
-        className={`text-sm font-bold leading-snug break-all ${colors.amount}`}
+        className={`text-sm font-bold leading-snug break-words sm:text-base ${colors.amount}`}
       >
         {metric.amount}
       </p>
 
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-[10px] text-[#667085] font-medium">
+        <span className="text-[11px] font-medium text-[#667085] sm:text-xs">
           {metric.label}
         </span>
         <span
           className={`
-            inline-flex items-center gap-0.5 text-[10px] font-semibold 
+            inline-flex items-center gap-0.5 text-[11px] font-semibold sm:text-xs
             ${metric.isPositive ? "text-[#12B76A]" : "text-red-600"}
           `}
         >
