@@ -1,12 +1,22 @@
 # Expert Listing
 
-## Features
+A modern, responsive real estate dashboard and listing platform built for seamless property management and client browsing.
 
-- Dashboard-first experience with responsive tab navigation and property cards
-- Shared loading skeletons for dashboard pages while content is resolving
-- Lightweight "Coming soon" states for unfinished dashboard sections
-- A floating app chat icon with a simple coming-soon popover
-- Custom error page handling for invalid or missing routes
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed on your machine:
+- **Node.js** (v18+ recommended)
+- **Yarn** package manager
+
+### Cloning the Repository
+
+```bash
+git clone https://github.com/EmmanuelOkon/expert-listing.git
+cd expert-listing
+```
+
 
 ## How to Run
 
@@ -24,6 +34,14 @@ yarn lint
 yarn typecheck
 yarn check
 ```
+
+## Features
+
+- Dashboard-first experience with responsive tab navigation and property cards
+- Shared loading skeletons for dashboard pages while content is resolving
+- Lightweight "Coming soon" states for unfinished dashboard sections
+- A floating app chat icon with a simple coming-soon popover
+- Custom error page handling for invalid or missing routes
 
 ## Technology Choices
 
