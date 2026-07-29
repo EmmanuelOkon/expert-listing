@@ -20,7 +20,7 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-2xl bg-gray-900 aspect-[3/4] sm:aspect-[4/5] md:aspect-auto md:h-72 lg:h-80 xl:h-[340px] duration-300 group ${className ?? ""}`}
+      className={`relative w-full overflow-hidden rounded-2xl bg-gray-900 aspect-auto md:h-72 lg:h-80 h-[340px] duration-300 group ${className ?? ""}`}
     >
       {/* Background Image */}
       <img

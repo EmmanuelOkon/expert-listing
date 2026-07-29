@@ -20,18 +20,18 @@ export function SalesOverviewCard() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-2 sm:items-end">
+        <div className="flex flex-col gap-2 items-end">
           {/* View Transactions button */}
           <button
             id="btn-view-transactions"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#D6D6D6] bg-transparent px-4 text-xs font-medium text-[#191919] transition-all duration-200 hover:border-[#D0D5DD] hover:bg-gray-50 sm:px-5 sm:text-sm"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#D6D6D6] bg-transparent px-4 text-xs font-medium text-[#191919] transition-all duration-200 hover:border-[#D0D5DD] hover:bg-gray-50 sm:px-5 sm:text-sm w-fit md:w-full "
           >
             View Transactions
           </button>
 
           {/* Time Range toggles */}
           <div
-            className="flex w-full items-center gap-1 rounded-lg p-0.5 sm:w-auto"
+            className="flex w-full justify-between items-center gap-1 rounded-lg p-0.5 sm:w-auto"
             role="tablist"
             aria-label="Sales overview time range"
           >
