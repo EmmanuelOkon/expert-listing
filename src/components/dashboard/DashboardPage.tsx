@@ -121,7 +121,6 @@ export function DashboardPage() {
         className="justify-start p-0"
       >
         <NavTabs />
-        {/* <NavTabs activeTab={activeTab} /> */}
         <TabsContent
           value={activeTab}
           className="mt-0 w-full border-0 p-0 outline-none"
