@@ -58,8 +58,8 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/30" />
 
       {hasModeSwitch && (
-        <div className="absolute left-3 top-3 z-10 flex flex-wrap gap-2">
-          {card.modes.map((mode) => {
+        <div className="absolute left-4 top-4 z-10 flex w-fit overflow-hidden rounded-[8px] bg-[#2B2E33]">
+          {card.modes.map((mode, index) => {
             const isActive = mode.value === activeMode;
 
             return (
@@ -68,14 +68,17 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => handleModeChange(mode.value)}
-                className={`inline-flex min-h-11 items-center rounded-md px-3 py-1 text-[10px] bg-black/60 font-semibold transition-colors duration-200 sm:text-xs gap-1 ${
-                  isActive ? " text-[#FFFF00]" : " text-[#D4D4D8] "
+                className={`inline-flex shrink-0 whitespace-nowrap h-7 flex-1 items-center justify-center gap-2 px-2 text-xs text-[13px] font-medium transition-colors duration-200 cursor-pointer ${
+                  index > 0 ? "border-l border-white/10" : ""
+                } ${
+                  isActive
+                    ? " text-[#FFFF00]"
+                    : "text-[#D4D4D8] hover:bg-white/5 hover:text-white"
                 }`}
               >
                 {isActive && (
-                  <span className="bg-[#FFFF00] h-1.5 w-1.5 rounded-full" />
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFFF00]" />
                 )}
-
                 {mode.label}
               </button>
             );
@@ -90,7 +93,7 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
             id={`card-prev-${card.id}`}
             aria-label="Previous image"
             onClick={handlePrev}
-            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 md:h-8 md:w-8"
+            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 md:h-8 md:w-8 cursor-pointer"
           >
             <ChevronLeft size={16} strokeWidth={2.5} />
           </button>
@@ -99,7 +102,7 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
             id={`card-next-${card.id}`}
             aria-label="Next image"
             onClick={handleNext}
-            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 md:h-8 md:w-8"
+            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 md:h-8 md:w-8 cursor-pointer"
           >
             <ChevronRight size={16} strokeWidth={2.5} />
           </button>
@@ -132,7 +135,7 @@ export function PropertyCard({ card, className }: PropertyCardProps) {
                 id={`card-dot-${card.id}-${index}`}
                 aria-label={`Go to slide ${index + 1}`}
                 onClick={() => setActiveSlide(index)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                   index === activeSlide ? "w-4 bg-white" : "w-1.5 bg-white/40"
                 }`}
               />
